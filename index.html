@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Beyond Fear</title>
+
+<style>
+body {
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: radial-gradient(circle at top,#d5b3ff,#6a5acd);
+    overflow:hidden;
+}
+
+/* glowing waves */
+body::before {
+    content:"";
+    position:absolute;
+    width:200%;
+    height:200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15), transparent);
+    animation: move 10s linear infinite;
+}
+
+@keyframes move {
+    0%{transform: translate(0,0);}
+    50%{transform: translate(-100px,-100px);}
+    100%{transform: translate(0,0);}
+}
+
+/* card */
+.card {
+    position:relative;
+    backdrop-filter: blur(25px);
+    background: rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:25px;
+    width:90%;
+    max-width:360px;
+    text-align:center;
+    box-shadow:0 0 60px rgba(255,255,255,0.3);
+    animation: float 5s infinite ease-in-out;
+}
+
+@keyframes float {
+    50%{transform:translateY(-12px);}
+}
+
+/* title */
+h1 {
+    letter-spacing:3px;
+}
+
+/* fox svg */
+.fox {
+    margin:15px auto;
+    width:80px;
+    height:80px;
+}
+
+/* text */
+p {
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* button box */
+.box {
+    margin-top:20px;
+    padding:15px;
+    border-radius:20px;
+    background: rgba(255,255,255,0.1);
+}
+
+/* button */
+button {
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:15px;
+    background: rgba(255,255,255,0.25);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover {
+    background: rgba(255,255,255,0.45);
+}
+
+/* sub */
+.sub {
+    margin-top:8px;
+    font-size:13px;
+}
+
+/* translator */
+select {
+    margin-bottom:10px;
+    border-radius:10px;
+    padding:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<select onchange="translate(this.value)">
+<option value="en">English</option>
+<option value="hi">Hindi</option>
+</select>
+
+<h1 id="title">BEYOND FEAR</h1>
+
+<!-- FOX (SVG, no image) -->
+<svg class="fox" viewBox="0 0 100 100">
+<polygon points="50,10 80,40 65,90 35,90 20,40" fill="white" opacity="0.8"/>
+</svg>
+
+<p id="desc">
+We're building a definitive collective to transcend the shadows of uncertainty. 
+Join us as we cultivate a future where every woman navigates the world with absolute sovereignty—truly Beyond Fear.
+</p>
+
+<div class="box">
+
+<button onclick="goToInsta()" id="btn">
+Follow Us
+</button>
+
+<div class="sub" id="sub">
+For a safer tomorrow
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function goToInsta(){
+    window.location.href="https://instagram.com/YOUR_USERNAME";
+}
+
+function translate(lang){
+    if(lang==="hi"){
+        title.innerText="डर से परे";
+        desc.innerText="हम एक ऐसा समूह बना रहे हैं जो अनिश्चितता के अंधेरे को पार करे। हम एक ऐसा भविष्य बना रहे हैं जहाँ हर महिला पूरी स्वतंत्रता और आत्मविश्वास के साथ आगे बढ़े — सच में डर से परे।";
+        btn.innerText="हमें फॉलो करें";
+        sub.innerText="एक सुरक्षित कल के लिए";
+    } else {
+        title.innerText="BEYOND FEAR";
+        desc.innerText="We're building a definitive collective to transcend the shadows of uncertainty. Join us as we cultivate a future where every woman navigates the world with absolute sovereignty—truly Beyond Fear.";
+        btn.innerText="Follow Us";
+        sub.innerText="For a safer tomorrow";
+    }
+}
+
+</script>
+
+</body>
+</html>
